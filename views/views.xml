@@ -2,16 +2,16 @@
   <data>
 
 
-  <record model="ir.ui.view" id="agricultores.cultivo_tree">
+    <record model="ir.ui.view" id="agricultores.cultivo_tree">
       <field name="name">Cultivo tree</field>
       <field name="model">agricultores.cultivo</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="nombre"/>
-          <field name="categoria_cultivo"/>
-          <field name="tipo_suelo"/>
-          <field name="fecha_siembra"/>
-          <field name="fecha_cosecha"/>
+          <field name="nombre" />
+          <field name="categoria_cultivo" />
+          <field name="tipo_suelo" />
+          <field name="fecha_siembra" />
+          <field name="fecha_cosecha" />
         </tree>
       </field>
     </record>
@@ -21,15 +21,37 @@
       <field name="model">agricultores.cultivo</field>
       <field name="arch" type="xml">
         <form>
-        <group name="datos cultivo">
-          <field name="nombre"/>
-          <field name="categoria_cultivo"/>
-          <field name="tipo_suelo"/>
+          <group col="2">
+            <group>
+              <field name="nombre" />
+            </group>
+            <group>
+              <field name="descripcion" />
+            </group>
           </group>
-          <group name="fechas">
-          <field name="fecha_siembra"/>
-          <field name="fecha_cosecha"/>
-          </group>
+          <notebook>
+            <page string="Datos de cultivo">
+              <group col="2">
+                <group>
+                  <field name="categoria_cultivo" />
+                </group>
+                <group>
+                  <field name="superficie" />
+                  <field name="tipo_suelo" />
+                </group>
+              </group>
+            </page>
+            <page string="Fechas">
+              <group col="2">
+                <group>
+                  <field name="fecha_siembra" />
+                </group>
+                <group>
+                  <field name="fecha_cosecha" />
+                </group>
+              </group>
+            </page>
+          </notebook>
         </form>
       </field>
     </record>
@@ -40,20 +62,20 @@
       <field name="view_mode">tree,form</field>
     </record>
 
-    
 
-   <record model="ir.ui.view" id="agricultores.agricultor_form">
+    <record model="ir.ui.view" id="agricultores.agricultor_form">
       <field name="name">Agricultor form</field>
       <field name="model">agricultores.agricultor</field>
       <field name="arch" type="xml">
         <form>
-         <!-- apellidos, nombre, tipo de cultivo, cultivo y cantidad -->
-        <group>
-          <field name="apellidos"/>
-          <field name="nombre"/>
-          <field name="cultivo_id"/>
-          <field name="cantidad_cosecha"/>
-        </group>
+          <!-- apellidos, nombre, tipo de cultivo, cultivo y cantidad -->
+          <group>
+            <field name="apellidos" />
+            <field name="nombre" />
+            <!-- <field name="categoria_cultivo"/> -->
+            <field name="cultivo_id" />
+            <field name="cantidad_cosecha" />
+          </group>
         </form>
       </field>
     </record>
@@ -63,11 +85,12 @@
       <field name="model">agricultores.agricultor</field>
       <field name="arch" type="xml">
         <tree>
-         <!-- apellidos, nombre, tipo de cultivo, cantidad -->
-          <field name="apellidos"/>
-          <field name="nombre"/>
-          <field name="cultivo_id"/>
-          <field name="cantidad_cosecha"/>
+          <!-- apellidos, nombre, tipo de cultivo, cantidad -->
+          <field name="apellidos" />
+          <field name="nombre" />
+          <!-- <field name="categoria_cultivo"/> -->
+          <field name="cultivo_id" />
+          <field name="cantidad_cosecha" />
         </tree>
       </field>
     </record>
@@ -77,23 +100,23 @@
       <field name="res_model">agricultores.agricultor</field>
       <field name="view_mode">tree,form</field>
     </record>
-    
-    
 
-    <menuitem name="Agricultores" id="agricultores.menu_root"/>
-    <menuitem name="Agricultor" id="agricultores.menu_agricultores" parent="agricultores.menu_root" action="agricultores.action_agricultor"/>
 
-    <menuitem name="Cultivos" id="agricultores.menu_cultivos" parent="agricultores.menu_root" action="agricultores.action_cultivo"/>
+    <menuitem name="Agricultores" id="agricultores.menu_root" />
+    <menuitem name="Agricultor" id="agricultores.menu_agricultores" parent="agricultores.menu_root"
+      action="agricultores.action_agricultor" />
 
-    
-    
-<!--     <menuitem name="Cultivos" id="agricultores.menu_cultivos" parent="agricultores.menu_root"/>
+    <menuitem name="Cultivos" id="agricultores.menu_cultivos" parent="agricultores.menu_root"
+      action="agricultores.action_cultivo" />
+
+
+    <!--     <menuitem name="Cultivos" id="agricultores.menu_cultivos" parent="agricultores.menu_root"/>
     <menuitem name="Cultivo" id="agricultores.menu_cultivo" parent="agricultores.menu_cultivos" 
               action="agricultores.cultivo_form"/> -->
-    
+
 
     <!-- explicit list view definition -->
-<!--
+    <!--
     <record model="ir.ui.view" id="agricultores.list">
       <field name="name">Agricultores list</field>
       <field name="model">agricultores.agricultores</field>
@@ -108,7 +131,7 @@
 -->
 
     <!-- actions opening views on models -->
-<!--
+    <!--
     <record model="ir.actions.act_window" id="agricultores.action_agricultor">
       <field name="name">Agricultores window</field>
       <field name="res_model">agricultores.agricultores</field>
@@ -117,7 +140,7 @@
 -->
 
     <!-- server action to the one above -->
-<!--
+    <!--
     <record model="ir.actions.server" id="agricultores.action_server">
       <field name="name">Agricultores server</field>
       <field name="model_id" ref="model_agricultores_agricultores"/>
@@ -133,16 +156,16 @@
 -->
 
     <!-- Top menu item -->
-<!--
+    <!--
     <menuitem name="Agricultores" id="agricultores.menu_root"/>
 -->
     <!-- menu categories -->
-<!--
+    <!--
     <menuitem name="Menu 1" id="agricultores.menu_1" parent="agricultores.menu_root"/>
     <menuitem name="Menu 2" id="agricultores.menu_2" parent="agricultores.menu_root"/>
 -->
     <!-- actions -->
-<!--
+    <!--
     <menuitem name="List" id="agricultores.menu_1_list" parent="agricultores.menu_1"
               action="agricultores.action_agricultor"/>
     <menuitem name="Server to list" id="agricultores" parent="agricultores.menu_2"

@@ -26,7 +26,7 @@ class Agricultor(models.Model):
                                                                             #el cual se puede usar para realizar busquedas
     cultivo_id = fields.Many2one("agricultores.cultivo", string = "Cultivo con el que trabaja ese agricultor" )
     #compradores_ids = fields.Many2many("agricultores.comprador", string = "Compradores")
-    
+    #categoria_cultivo = fields.Selection(related = "cultivo_id.categoria_cultivo", string = "Tipo de cultivo")
     
     @api.depends("cultivo_id.superficie", "cultivo_id.categoria_cultivo")
     def _compute_cantidad_cosecha(self):
